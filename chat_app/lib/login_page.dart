@@ -8,10 +8,34 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      drawer: Drawer(),
-      floatingActionButton: FloatingActionButton(onPressed: () {}),
-      body: Text("Hello"),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "Let's sign you in",
+              style: TextStyle(
+                  color: Colors.brown,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0.5),
+            ),
+            Text(
+              "Welcome back! \n You've been missed!",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.blueGrey),
+            ),
+            Image.network(
+              "https://3009709.youcanlearnit.net/Alien_LIL_131338.png",
+              height: 200,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

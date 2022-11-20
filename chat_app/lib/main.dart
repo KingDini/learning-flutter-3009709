@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'chat_page.dart';
 import 'login_page.dart';
 
 void main() {
@@ -9,11 +10,10 @@ void main() {
 class ChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
       title: "NanoChat App",
       theme: ThemeData(primarySwatch: Colors.yellow),
-      home: LoginPage(),
+      home: ChatPage(),
     );
   }
 }
