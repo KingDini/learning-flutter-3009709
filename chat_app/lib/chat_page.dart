@@ -11,11 +11,12 @@ class ChatPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Hi Pooja!'),
+        title: Text('Hi Houdini!'),
         actions: [
           IconButton(
               onPressed: () {
                 //TODO: Navigate back to LoginPage on logout
+                Navigator.pop(context);
 
                 print('Icon pressed!');
               },
