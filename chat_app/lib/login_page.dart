@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  LoginPage({Key? key}) : super(key: key);
+
+  final userNameController = TextEditingController();
+  final passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   void loginUser() {
-    print('login successful!');
+    if (_formKey.currentState != null && _formKey.currentState!.validate()) {
+      print(userNameController.text);
+      print(passwordController.text);
+      print('login successful!');
+    } else {
+      print("Not successful");
+    }
   }
 
   @override
@@ -41,11 +51,44 @@ class LoginPage extends StatelessWidget {
 
               //TODO: Add Username & Password text fields
 
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      validator: (value) {
+                        if (value != null &&
+                            value.isNotEmpty &&
+                            value.length < 5) {
+                          return "Your username should be more than 5 characters";
+                        } else if (value != null && value.isEmpty) {
+                          return "Please enter your username";
+                        }
+                      },
+                      controller: userNameController,
+                      decoration: InputDecoration(
+                          hintText: "Add you username",
+                          hintStyle: TextStyle(color: Colors.blueGrey),
+                          border: OutlineInputBorder()),
+                    ),
+                    SizedBox(height: 20),
+                    TextFormField(
+                      controller: passwordController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          hintText: "Add you password",
+                          hintStyle: TextStyle(color: Colors.blueGrey),
+                          border: OutlineInputBorder()),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
               ElevatedButton(
                   onPressed: loginUser,
                   child: Text(
-                    'Click me!',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),
+                    'Login',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
                   )),
               GestureDetector(
                 onTap: () {
