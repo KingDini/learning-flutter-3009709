@@ -2,6 +2,7 @@ import 'package:chat_app/utils/spaces.dart';
 import 'package:chat_app/utils/textfield_styles.dart';
 import 'package:chat_app/widgets/login_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -92,14 +93,17 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
                   )),
               GestureDetector(
-                onTap: () {
+                onTap: () async {
                   //todo: Navigate to browser
                   print('Link clicked!');
+                  if (!await launchUrl(
+                      Uri.parse("https://care.nanosoftsystems.com"),
+                      mode: LaunchMode.externalApplication)) {}
                 },
                 child: Column(
                   children: [
                     Text('Find us on'),
-                    Text('https://poojabhaumik.com'),
+                    Text('https://nanosoftsystems.com'),
                   ],
                 ),
               )
