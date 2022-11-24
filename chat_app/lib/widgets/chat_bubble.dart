@@ -14,6 +14,8 @@ class ChatBubble extends StatelessWidget {
       alignment: alignment,
       child: Container(
         //TODO: Fix chat bubble width
+        constraints:
+            BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.5),
         padding: EdgeInsets.all(24),
         child: Column(
           mainAxisSize: MainAxisSize.min,
