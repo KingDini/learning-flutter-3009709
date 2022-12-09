@@ -10,11 +10,12 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isAuthor = entity.author.userName == "poojab26";
     return Align(
       alignment: alignment,
       child: Container(
         constraints:
-            BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.5),
+            BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.6),
         padding: EdgeInsets.all(24),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -25,18 +26,23 @@ class ChatBubble extends StatelessWidget {
             ),
             if (entity.imageUrl != null)
               //TODO: Make image rounded
-              Image.network(
-                '${entity.imageUrl}',
+              Container(
                 height: 200,
-              )
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    image:
+                        DecorationImage(image: NetworkImage(entity.imageUrl!)),
+                    borderRadius: BorderRadius.circular(12)),
+              ),
           ],
         ),
         //TODO: Reduce padding
-        margin: EdgeInsets.all(50),
+        margin: EdgeInsets.all(10),
         decoration: BoxDecoration(
 
-          //TODO: Update color depending on current author
-            color: Colors.grey,
+            //TODO: Update color depending on current author
+
+            color: isAuthor ? Theme.of(context).primaryColor : Colors.black87,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),
